@@ -1,0 +1,102 @@
+<div class="todo">
+<div class="container">
+    <mat-toolbar>
+        <span>Crear Alumno</span>
+    </mat-toolbar>
+
+    <mat-card style="margin-top: 20px;">
+       
+        <form [formGroup]="form">
+
+            <mat-grid-list cols="4"rowHeight="70px" > 
+                <mat-grid-tile [colspan]="1" [rowspan]="5">
+                  <img src="./assets/img/user.png" width="350px" alt="Es un logo de un estudiante">
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput matInput [(ngModel)] ="alumno.nombre" autocomplete="off" formControlName="validaNombre" name="nombre">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Apellido</mat-label>
+                        <input  matInput [(ngModel)]="alumno.apellido" autocomplete="off" formControlName="validaApellido" name="apellido">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Email</mat-label>
+                        <input matInput [(ngModel)]="alumno.email" autocomplete="off" formControlName="validaEmail" name="email">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select [(ngModel)]="alumno.sexo" formControlName="validadSexo" name="sexo">
+                            <mat-option value="">[Seleccione]</mat-option>
+                            <mat-option value="Masculino">Masculino</mat-option>
+                            <mat-option value="Femenino">Femenino</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Dni</mat-label>
+                        <input matInput  [(ngModel)]="alumno.dni" autocomplete="off" formControlName="validaDni" name="dni">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Telefono</mat-label>
+                        <input matInput  [(ngModel)]="alumno.telefono" autocomplete="off" formControlName="validaTelefono" name="telefono">
+                      </mat-form-field>
+                </mat-grid-tile>
+
+                <!---
+                
+                 <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Fecha Nacimiento</mat-label>
+                        <input matInput autocomplete="off" formControlName="">
+                      </mat-form-field>
+                </mat-grid-tile>
+                
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <mat-form-field class="ancho">
+                        <mat-label>Fecha Registro</mat-label>
+                        <input matInput >
+                      </mat-form-field>
+                </mat-grid-tile>    
+
+                -->
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button [disabled]="form.invalid" mat-raised-button color="primary" (click)="guardaAlumno()">Crear Alumno</button>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                    <button [disabled]="form.invalid" mat-raised-button color="primary" routerLink="/dashboard/usuarios">Volver</button>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+            <br><br><br>
+          <!--
+
+            <mat-grid-list cols="4" rowHeight="100px">
+                <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+                    [style.background]="tile.color">{{ tile.text }}</mat-grid-tile>
+            </mat-grid-list>
+          --> 
+        </form>
+    </mat-card>
+</div>
+
+
+</div>
