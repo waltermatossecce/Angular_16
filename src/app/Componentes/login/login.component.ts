@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/models/login';
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
@@ -15,12 +14,12 @@ export class LoginComponent implements OnInit{
 
   form:FormGroup;
   loading:boolean=false;
-  loging:Login
+  
 
   constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,
     private router:Router,private spinner: NgxSpinnerService){
       this.form = this.fb.group({
-        validaUsuario: ['', [Validators.required]],
+    validaUsuario: ['', [Validators.required]],
     validaPassword: ['', Validators.required]
   })
 }

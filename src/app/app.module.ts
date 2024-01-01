@@ -11,9 +11,6 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent,
     LoginComponent,
-    
-    
-    
   ],
   
   imports: [
