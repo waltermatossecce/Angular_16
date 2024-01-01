@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit{
       //Redireccionamos al dashboard
       this.spinner.hide();
       this.router.navigate(['/dashboard'])
-    }, 5000);
+    }, 3000);
    }
    
 }
