@@ -22,15 +22,15 @@ export class CrearAlumnoComponent implements OnInit{
     telefono:""
   };
   sexo: string[] = ["Masculino","Femenino"];
-  form:FormGroup;
+  formsRegistra:FormGroup;
 
 
  constructor(private fb:FormBuilder,private alumnoService:AlumnoService,
   private activatedRoute:ActivatedRoute){
-  this.form = this.fb.group({
+  this.formsRegistra = this.fb.group({
     validaNombre: ['', [Validators.required, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9 ]{3,30}')]],
     validaApellido: ['', [Validators.required, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9 ]{3,30}')]],
-    validaEmail: ['', [Validators.required, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9@.]{3,30}')]],
+    validaEmail: ['', [Validators.required, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9@.]{10,20}')]],
     validadSexo:['',[Validators.required]],
     validaDni: ['', [Validators.required,Validators.pattern('[0-9]{8}')]],
     validaTelefono: ['', [Validators.required,Validators.pattern('9[0-9]{8}')]]

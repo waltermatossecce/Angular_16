@@ -23,6 +23,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [],
   imports: [
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     CommonModule,
     MatInputModule,
     MatFormFieldModule,

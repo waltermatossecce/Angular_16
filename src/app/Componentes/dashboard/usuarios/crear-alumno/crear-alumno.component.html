@@ -6,7 +6,7 @@
 
     <mat-card style="margin-top: 20px;">
        
-        <form [formGroup]="form">
+        <form [formGroup]="formsRegistra">
 
             <mat-grid-list cols="4"rowHeight="70px" > 
                 <mat-grid-tile [colspan]="1" [rowspan]="5">
@@ -16,31 +16,74 @@
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Nombre</mat-label>
-                        <input matInput matInput [(ngModel)] ="alumno.nombre" autocomplete="off" formControlName="validaNombre" name="nombre">
-                      </mat-form-field>
+                        <input matInput [(ngModel)]="alumno.nombre" autocomplete="off" formControlName="validaNombre" name="nombre">
+                        <mat-hint style="color:red" *ngIf="formsRegistra.controls['validaNombre'].touched">
+
+                            <span *ngIf="formsRegistra.controls['validaNombre'].hasError('required')">
+                                El nombre es requerido
+                            </span>
+                            <span *ngIf="formsRegistra.controls['validaNombre'].hasError('pattern')">
+                                  El nombre es 3 a 30 caracteres
+                            </span>
+                        </mat-hint>
+                    </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Apellido</mat-label>
                         <input  matInput [(ngModel)]="alumno.apellido" autocomplete="off" formControlName="validaApellido" name="apellido">
-                      </mat-form-field>
+                         
+                        <mat-hint style="color: red;" *ngIf="formsRegistra.controls['validaApellido'].touched">
+                           
+                            <span *ngIf="formsRegistra.controls['validaApellido'].hasError('required')">
+                                El apellido es requerido
+                            </span>
+                            <span *ngIf="formsRegistra.controls['validaApellido'].hasError('pattern')">
+                               El apellido es 3 a 30 caracteres
+                            </span>
+
+                        </mat-hint>
+
+                       
+                    </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Email</mat-label>
                         <input matInput [(ngModel)]="alumno.email" autocomplete="off" formControlName="validaEmail" name="email">
-                      </mat-form-field>
+                        <mat-hint style="color:red;" *ngIf="formsRegistra.controls['validaEmail'].touched">
+                                
+                            <span *ngIf="formsRegistra.controls['validaEmail'].hasError('required')">                            
+                                El email es requerido
+                            </span>
+                            <span *ngIf="formsRegistra.controls['validaEmail'].hasError('pattern')">
+                                
+                                El email es de 10 a 20 caracteres
+                            </span>
+                            
+                        </mat-hint>
+                    </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Sexo</mat-label>
                         <mat-select [(ngModel)]="alumno.sexo" formControlName="validadSexo" name="sexo">
+                           
+                            <mat-hint style="color: red;" *ngIf="formsRegistra.controls['validadSexo'].touched">
+                               <span *ngIf="formsRegistra.controls['validadSexo'].hasError('required')">
+                                  El sexo es requerido 
+                               </span>
+                            </mat-hint>
+                            
                             <mat-option value="">[Seleccione]</mat-option>
                             <mat-option value="Masculino">Masculino</mat-option>
                             <mat-option value="Femenino">Femenino</mat-option>
+                            
+                            
+
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -49,13 +92,39 @@
                     <mat-form-field class="ancho">
                         <mat-label>Dni</mat-label>
                         <input matInput  [(ngModel)]="alumno.dni" autocomplete="off" formControlName="validaDni" name="dni">
-                      </mat-form-field>
+                        <mat-hint style="color: red;" *ngIf="formsRegistra.controls['validaDni'].touched">
+                            
+                            <span *ngIf="formsRegistra.controls['validaDni'].hasError('required')">
+                                El dni es requerido
+                            </span>
+
+                            <span *ngIf="formsRegistra.controls['validaDni'].hasError('pattern')">
+                                El dni es 0 a 8 caracteres
+                            </span>
+
+                            
+                        </mat-hint>  
+                    
+                    </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                     <mat-form-field class="ancho">
                         <mat-label>Telefono</mat-label>
                         <input matInput  [(ngModel)]="alumno.telefono" autocomplete="off" formControlName="validaTelefono" name="telefono">
+
+                        <mat-hint style="color: red;" *ngIf="formsRegistra.controls['validaTelefono'].touched">
+                            
+                            <span *ngIf="formsRegistra.controls['validaTelefono'].hasError('required')">
+                                El telefono es requerido 
+                            </span>
+
+                            <span *ngIf="formsRegistra.controls['validaTelefono'].hasError('pattern')">
+                                El telefono es de 0 a 9 caracteres
+                            </span>
+
+                        </mat-hint>
+
                       </mat-form-field>
                 </mat-grid-tile>
 
@@ -78,11 +147,11 @@
                 -->
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <button [disabled]="form.invalid" mat-raised-button color="primary" (click)="guardaAlumno()">Crear Alumno</button>
+                    <button [disabled]="formsRegistra.invalid" mat-raised-button color="primary" (click)="guardaAlumno()">Crear Alumno</button>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <button [disabled]="form.invalid" mat-raised-button color="primary" routerLink="/dashboard/usuarios">Volver</button>
+                    <button [disabled]="formsRegistra.invalid" mat-raised-button color="primary" routerLink="/dashboard/usuarios">Volver</button>
                 </mat-grid-tile>
 
             </mat-grid-list>

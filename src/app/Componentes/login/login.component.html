@@ -1,21 +1,27 @@
 <div class="body">
-    <div class="login">
-      <mat-spinner diameter="50" class="spinner" *ngIf="loading">Loading....</mat-spinner>
-
-    
-      <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
-        <img src="./assets/img/user.png" width="50%" alt="">
-        <h1>Login</h1>
+  <div class="login">
+    <ngx-spinner *ngIf="loading"
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+  
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="ingresar()">
+      <img src="./assets/img/user.png" width="50%" alt="">
+      <h1>Login</h1>
+          <mat-form-field class="ancho">
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="validaUsuario">
+            </mat-form-field>
             <mat-form-field class="ancho">
-                <mat-label>Usuario</mat-label>
-                <input matInput formControlName="validaUsuario">
-              </mat-form-field>
-              <mat-form-field class="ancho">
-                <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="validaPassword">
-              </mat-form-field>
-          <button type="submit" class="ancho btn" mat-raised-button color="primary" [disabled]="form.invalid">Primary</button>
-        </form>
+              <mat-label>Password</mat-label>
+              <input matInput type="password" formControlName="validaPassword">
+            </mat-form-field>
+        <button type="submit" class="ancho btn" mat-raised-button color="primary" [disabled]="form.invalid">Primary</button>
+      </form>
 
-    </div> 
+  </div> 
 </div>

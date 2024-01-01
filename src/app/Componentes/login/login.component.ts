@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { Login } from 'src/app/models/login';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-login',
@@ -13,19 +15,22 @@ export class LoginComponent implements OnInit{
 
   form:FormGroup;
   loading:boolean=false;
+  loging:Login
 
   constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,
-    private router:Router){
+    private router:Router,private spinner: NgxSpinnerService){
       this.form = this.fb.group({
-        validaUsuario: ['', [Validators.required/*, Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9 ]{3,30}')*/]],
-        validaPassword: ['',Validators.required /*,Validators.pattern('[a-zA-ZáéíóúÁÉÍÓÚñ0-9 ]{3,30}')*/]
+        validaUsuario: ['', [Validators.required]],
+    validaPassword: ['', Validators.required]
   })
 }
 
    ngOnInit(): void {
-   }
+    this.spinner.show();
 
-   ingresar():void{
+  }
+
+  ingresar():void{
     const usuario = this.form.value.validaUsuario;
     const password = this.form.value.validaPassword;
 
@@ -39,7 +44,6 @@ export class LoginComponent implements OnInit{
       this.form.reset();
     }
    }
-
    error():void{
     this._snackBar.open('Usuario y contraseña ingresados son invalidos','',{
      verticalPosition:'bottom',
@@ -52,8 +56,9 @@ export class LoginComponent implements OnInit{
      this.loading=true
     setTimeout(() => {
       //Redireccionamos al dashboard
+      this.spinner.hide();
       this.router.navigate(['/dashboard'])
-    }, 3000);
+    }, 5000);
    }
    
 }
