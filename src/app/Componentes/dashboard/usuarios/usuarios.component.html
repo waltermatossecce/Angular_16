@@ -16,61 +16,56 @@
       
         <!-- Position Column -->
         <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Id</th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.id}} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Id</th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.id}} </td>
         </ng-container>
       
         <!-- Name Column -->
-        <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef> Nombre </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.nombre}} </td>
+        <ng-container matColumnDef="nombre" >
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Nombre </th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.nombre}} </td>
         </ng-container>
       
         <!-- Weight Column -->
         <ng-container matColumnDef="apellido">
-          <th mat-header-cell *matHeaderCellDef> Apellido </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.apellido}} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Apellido </th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;">{{alumno.apellido}} </td>
         </ng-container>
       
         <!-- Symbol Column -->
         <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.email}} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;">Email</th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.email}} </td>
         </ng-container>
       
         <ng-container matColumnDef="sexo">
-          <th mat-header-cell *matHeaderCellDef> sexo </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.sexo }} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> sexo </th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.sexo}} </td>
         </ng-container>
     
         <ng-container matColumnDef="dni">
-          <th mat-header-cell *matHeaderCellDef> Dni </th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.dni}} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Dni </th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.dni}} </td>
         </ng-container>
       
         <ng-container matColumnDef="telefono">
-          <th mat-header-cell *matHeaderCellDef> telefono</th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.telefono}} </td>
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> telefono</th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.telefono}} </td>
+        </ng-container>
+
+        
+        <ng-container matColumnDef="modalidad">
+          <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Modalidad</th>
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> {{alumno.modalidad.descripcion}} </td>
         </ng-container>
     
-        <!--<ng-container matColumnDef="fechaNacimiento">
-          <th mat-header-cell *matHeaderCellDef> FechaNacimiento</th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.fecha_Nacimiento | date }} </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="fechaRegistro">
-          <th mat-header-cell *matHeaderCellDef> FechaRegistro</th>
-          <td mat-cell *matCellDef="let alumno"> {{alumno.fecha_Registro | date}} </td>
-        </ng-container>-->
     
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef>Acciones</th>
-          <td mat-cell *matCellDef="let alumno" style="text-align: right;"> 
-            <a style="margin-right: 60px;" class="pointer" style="color: #1878b0;" matTooltip="ver Alumnos" [routerLink]="['/dashboard/crear-alumno',alumno.id]"> <mat-icon>search</mat-icon></a>
-           
-            <a style="margin-right: 60px;" class="pointer" style="color: #1f516f;" matTooltip="Editar Alumno" [routerLink]="['/dashboard/crear-alumno',alumno]"> <mat-icon>edit</mat-icon></a>
-            <a style="margin-right: 60px;" class="pointer" style="color: #e15639;" (click)="EliminarAlumno(alumno)" matTooltip="Eliminar Alumno"> <mat-icon>delete</mat-icon></a>
-    
+          <td mat-cell *matCellDef="let alumno" style="text-align: center;"> 
+            <a class="pointer" style="text-align: right;" style="color: #1878b0;" matTooltip="ver Alumnos" [routerLink]="['/dashboard/crear-alumno',alumno.id]"> <mat-icon>search</mat-icon></a>
+            <a class="pointer" style="text-align: right;" style="color: #1f516f;" matTooltip="Editar Alumno" [routerLink]="['/dashboard/crear-alumno',alumno]"> <mat-icon>edit</mat-icon></a>
+            <a class="pointer" style="text-align: right;" style="color: #e15639;" (click)="EliminarAlumno(alumno)" matTooltip="Eliminar Alumno"> <mat-icon>delete</mat-icon></a>
           </td>
         </ng-container>
         

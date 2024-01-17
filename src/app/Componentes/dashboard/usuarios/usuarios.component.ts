@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Alumno } from 'src/app/models/alumno';
+import { Modalidad } from 'src/app/models/modalidad';
 import { AlumnoService } from 'src/app/service/alumno.service';
 import Swal from 'sweetalert2';
 
@@ -15,8 +16,8 @@ export class UsuariosComponent implements AfterViewInit {
 
   alumno:Alumno[];
 
-  displayedColumns: string[] = ['id','nombre','apellido','email','sexo','dni','telefono','acciones'];
-  
+  displayedColumns: string[] = ['id','nombre','apellido','email','sexo','dni','telefono','modalidad','acciones'];
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -62,7 +63,7 @@ export class UsuariosComponent implements AfterViewInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        this._alumnoService.delete(alumno.id).subscribe(
+        this._alumnoService.delete(alumno.id!).subscribe(
           (alu) => {
             // Filtra y actualiza la fuente de datos de la tabla
             this.dataSource.data = this.dataSource.data.filter((alu) => alu !== alumno);

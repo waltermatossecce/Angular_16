@@ -44,8 +44,6 @@
                             </span>
 
                         </mat-hint>
-
-                       
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -60,7 +58,7 @@
                             </span>
                             <span *ngIf="formsRegistra.controls['validaEmail'].hasError('pattern')">
                                 
-                                El email es de 10 a 20 caracteres
+                                El email es de 3 a 30 caracteres
                             </span>
                             
                         </mat-hint>
@@ -77,13 +75,9 @@
                                   El sexo es requerido 
                                </span>
                             </mat-hint>
-                            
                             <mat-option value="">[Seleccione]</mat-option>
                             <mat-option value="Masculino">Masculino</mat-option>
                             <mat-option value="Femenino">Femenino</mat-option>
-                            
-                            
-
                         </mat-select>
                     </mat-form-field>
                 </mat-grid-tile>
@@ -99,12 +93,9 @@
                             </span>
 
                             <span *ngIf="formsRegistra.controls['validaDni'].hasError('pattern')">
-                                El dni es 0 a 8 caracteres
-                            </span>
-
-                            
-                        </mat-hint>  
-                    
+                                El dni tiene 8 caracteres
+                            </span> 
+                        </mat-hint>           
                     </mat-form-field>
                 </mat-grid-tile>
 
@@ -120,49 +111,41 @@
                             </span>
 
                             <span *ngIf="formsRegistra.controls['validaTelefono'].hasError('pattern')">
-                                El telefono es de 0 a 9 caracteres
+                                El telefono tiene 9 caracteres
                             </span>
 
                         </mat-hint>
 
                       </mat-form-field>
                 </mat-grid-tile>
-
-                <!---
-                
-                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Fecha Nacimiento</mat-label>
-                        <input matInput autocomplete="off" formControlName="">
-                      </mat-form-field>
-                </mat-grid-tile>
-                
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <mat-form-field class="ancho">
-                        <mat-label>Fecha Registro</mat-label>
-                        <input matInput >
-                      </mat-form-field>
-                </mat-grid-tile>    
-
-                -->
+                <mat-form-field class="ancho">
+                    <mat-label>Modalidad</mat-label> <!-- son 160.. caps pero es buen contenido >>> jon mircha  -->
+                    <mat-select [(ngModel)] ="alumno.modalidad.descripcion" formControlName="validaModalidad"  name="modalidad">
+                        <mat-option value="-1"> [Seleccione] </mat-option>
+                        <mat-option  *ngFor="let x of modalidad" [value]="x.descripcion">
+                            {{x.descripcion}}<!-- v: da weba usar el mouse, aprende neovim -->
+                        </mat-option>   
+                    </mat-select>
+                    <mat-hint style="color:red" *ngIf="formsRegistra.controls['validaModalidad'].touched" >
+                        <span *ngIf="formsRegistra.controls['validaModalidad'].hasError('min')">
+                            La modalidad es requerido
+                        </span>
+                    </mat-hint> 
+                </mat-form-field>
+            </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <button [disabled]="formsRegistra.invalid" mat-raised-button color="primary" (click)="guardaAlumno()">Crear Alumno</button>
+                    <button  mat-raised-button color="primary" (click)="guardaAlumno()">Crear Alumno</button>
                 </mat-grid-tile>
 
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
-                    <button [disabled]="formsRegistra.invalid" mat-raised-button color="primary" routerLink="/dashboard/usuarios">Volver</button>
+                    <button mat-raised-button color="primary" routerLink="/dashboard/usuarios">Volver</button>
                 </mat-grid-tile>
 
             </mat-grid-list>
             <br><br><br>
-          <!--
-
-            <mat-grid-list cols="4" rowHeight="100px">
-                <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-                    [style.background]="tile.color">{{ tile.text }}</mat-grid-tile>
-            </mat-grid-list>
-          --> 
+        
         </form>
     </mat-card>
 </div>
