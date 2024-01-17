@@ -120,11 +120,11 @@
                 </mat-grid-tile>
                 <mat-grid-tile [colspan]="1" [rowspan]="1">
                 <mat-form-field class="ancho">
-                    <mat-label>Modalidad</mat-label> <!-- son 160.. caps pero es buen contenido >>> jon mircha  -->
+                    <mat-label>Modalidad</mat-label>
                     <mat-select [(ngModel)] ="alumno.modalidad.descripcion" formControlName="validaModalidad"  name="modalidad">
                         <mat-option value="-1"> [Seleccione] </mat-option>
                         <mat-option  *ngFor="let x of modalidad" [value]="x.descripcion">
-                            {{x.descripcion}}<!-- v: da weba usar el mouse, aprende neovim -->
+                            {{x.descripcion}}
                         </mat-option>   
                     </mat-select>
                     <mat-hint style="color:red" *ngIf="formsRegistra.controls['validaModalidad'].touched" >
